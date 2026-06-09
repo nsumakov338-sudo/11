@@ -1,0 +1,13 @@
+Проверка разделения по формам
+=============================
+
+MainWindow.xaml — главное меню, статистика, статус сети и переходы по разделам.
+ApplicationsWindow.xaml — таблица заявок, поиск, фильтры, сортировка, удаление.
+ApplicationFormWindow.xaml — добавление и редактирование заявки.
+ApplicationDetailsWindow.xaml — подробная информация, быстрое изменение статуса.
+AnalyticsWindow.xaml — график распределения заявок по категории/статусу/услуге.
+ExportWindow.xaml — экспорт полного списка и отчета за период в Excel/Word.
+LogsWindow.xaml — просмотр структурированного локального лога.
+FirebaseSettingsWindow.xaml — подключение Firebase Realtime Database.
+
+Логика хранения и синхронизации вынесена в Services/AppController.cs.

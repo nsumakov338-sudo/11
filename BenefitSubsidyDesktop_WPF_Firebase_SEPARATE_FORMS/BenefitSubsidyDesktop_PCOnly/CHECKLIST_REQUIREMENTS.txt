@@ -1,0 +1,16 @@
+ЧЕК-ЛИСТ СООТВЕТСТВИЯ ЗАДАНИЮ — ПК-ВЕРСИЯ
+
+1. CRUD заявлений: MainWindow.xaml / MainWindow.xaml.cs — таблица, форма, кнопки Сохранить/Удалить.
+2. Уникальный ID: GenerateRequestId(), формат ЛГ-ГГММДД-XXX.
+3. Поля заявления: Models/ApplicationRequest.cs.
+4. Регулярные выражения и валидаторы: Services/ValidationService.cs.
+5. Комментарии: InternalComment до 400, ExternalComment до 250.
+6. Логирование: Services/LogService.cs, файл structured_log.txt.
+7. Экспорт Excel/Word: Services/ExportService.cs, кнопки во вкладке "Аналитика / экспорт".
+8. Синхронизация: Services/CloudSyncService.cs, DataStore.cs, очередь sync_queue.json.
+9. Оффлайн: кнопка "Отключить сеть", изменения остаются в очереди.
+10. LWW: CloudSyncService сравнивает LastModifiedUtc.
+11. График аналитики: DrawAnalytics() в MainWindow.xaml.cs.
+12. Индикатор облака: левое меню MainWindow.xaml.
+13. Служебные метки: поле SpecialFlag, скрытое от будущей мобильной версии.
+14. Отчет за период: вкладка "Аналитика / экспорт".

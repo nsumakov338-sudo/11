@@ -1,0 +1,152 @@
+{
+  "rules": {
+    "applications": {
+      ".read": "auth != null",
+      ".indexOn": [
+        "status",
+        "benefitCategory",
+        "serviceType",
+        "priority",
+        "assignedManagerUid",
+        "lastModified"
+      ],
+      "$appId": {
+        ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'operator' || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".validate": "newData.hasChildren(['id','fullName','phone','address','benefitCategory','serviceType','status','priority','dateCreated','documentNumber','lastModified','modifiedBy','isDeleted'])",
+        "id": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 30"
+        },
+        "fullName": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 100"
+        },
+        "phone": {
+          ".validate": "newData.isString() && newData.val().matches(/^\\+7[0-9]{10}$/)"
+        },
+        "address": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 150"
+        },
+        "benefitCategory": {
+          ".validate": "newData.isString() && (newData.val() === 'Пенсионер' || newData.val() === 'Инвалид' || newData.val() === 'Многодетная семья' || newData.val() === 'Ветеран' || newData.val() === 'Малоимущий')"
+        },
+        "serviceType": {
+          ".validate": "newData.isString() && (newData.val() === 'Интернет' || newData.val() === 'ТВ' || newData.val() === 'Телефония' || newData.val() === 'Комплексный пакет')"
+        },
+        "status": {
+          ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'manager' || root.child('users').child(auth.uid).child('role').val() === 'operator' || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+          ".validate": "newData.isString() && (newData.val() === 'Принято' || newData.val() === 'На проверке' || newData.val() === 'Одобрено' || newData.val() === 'Отказано' || newData.val() === 'Выполнено')"
+        },
+        "priority": {
+          ".validate": "newData.isString() && (newData.val() === 'Обычный' || newData.val() === 'Срочный')"
+        },
+        "dateCreated": {
+          ".validate": "newData.isString() && newData.val().length >= 10 && newData.val().length <= 10"
+        },
+        "documentNumber": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 50"
+        },
+        "operatorExternalComment": {
+          ".validate": "newData.isString() && newData.val().length <= 250"
+        },
+        "managerComment": {
+          ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'manager' || root.child('users').child(auth.uid).child('role').val() === 'operator' || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+          ".validate": "newData.isString() && newData.val().length <= 200"
+        },
+        "assignedManagerUid": {
+          ".validate": "newData.isString() && newData.val().length <= 128"
+        },
+        "assignedManagerName": {
+          ".validate": "newData.isString() && newData.val().length <= 100"
+        },
+        "createdByUid": {
+          ".validate": "newData.isString() && newData.val().length <= 128"
+        },
+        "createdAt": {
+          ".validate": "newData.isString()"
+        },
+        "lastModified": {
+          ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'manager' || root.child('users').child(auth.uid).child('role').val() === 'operator' || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+          ".validate": "newData.isString()"
+        },
+        "modifiedBy": {
+          ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'manager' || root.child('users').child(auth.uid).child('role').val() === 'operator' || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+          ".validate": "newData.isString() && (newData.val() === 'operator' || newData.val() === 'manager' || newData.val() === 'admin' || newData.val() === 'system')"
+        },
+        "isDeleted": {
+          ".validate": "newData.isBoolean()"
+        },
+        "$other": {
+          ".validate": true
+        }
+      }
+    },
+    "applicationPrivate": {
+      ".read": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'operator' || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+      ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'operator' || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+      "$appId": {
+        "internalComment": {
+          ".validate": "newData.isString() && newData.val().length <= 400"
+        },
+        "specialFlag": {
+          ".validate": "newData.isString() && (newData.val() === '' || newData.val() === 'Требует согласования с юридическим отделом' || newData.val() === 'Ожидает подтверждения документа')"
+        },
+        "legalApprovalRequired": {
+          ".validate": "newData.isBoolean()"
+        },
+        "waitingDocumentConfirmation": {
+          ".validate": "newData.isBoolean()"
+        },
+        "updatedAt": {
+          ".validate": "newData.isString()"
+        },
+        "updatedByUid": {
+          ".validate": "newData.isString()"
+        },
+        "$other": {
+          ".validate": true
+        }
+      }
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+        "email": {
+          ".validate": "newData.isString()"
+        },
+        "fullName": {
+          ".validate": "newData.isString() && newData.val().length <= 100"
+        },
+        "role": {
+          ".validate": "newData.isString() && (newData.val() === 'operator' || newData.val() === 'manager' || newData.val() === 'admin')"
+        },
+        "isActive": {
+          ".validate": "newData.isBoolean()"
+        },
+        "$other": {
+          ".validate": true
+        }
+      }
+    },
+    "managerStats": {
+      ".read": "auth != null",
+      ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'manager' || root.child('users').child(auth.uid).child('role').val() === 'admin')"
+    },
+    "auditLogs": {
+      ".read": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'operator' || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+      ".write": "auth != null"
+    },
+    "notifications": {
+      ".read": "auth != null",
+      ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'operator' || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+      ".indexOn": [
+        "targetRole",
+        "isRead",
+        "createdAt"
+      ]
+    },
+    "syncMeta": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    }
+  }
+}

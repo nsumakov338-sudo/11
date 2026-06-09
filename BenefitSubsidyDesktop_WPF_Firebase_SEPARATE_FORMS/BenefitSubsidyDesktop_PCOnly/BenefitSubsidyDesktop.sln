@@ -1,0 +1,56 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.7.11819.209 insiders
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenefitSubsidyDesktop", "BenefitSubsidyDesktop.csproj", "{B6FD6B1A-B0EC-4FA3-84B2-C4A459EA63B2}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BenefitSubsidyDesktop.Tests", "..\..\..\Downloads\MSTest_Code_BenefitSubsidy\MSTest_Code\BenefitSubsidyDesktop.Tests\", "{D9253C01-971C-B87B-3E1C-057A9908F1A3}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		ProjectReferences = "{b6fd6b1a-b0ec-4fa3-84b2-c4a459ea63b2}|BenefitSubsidyDesktop.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_5706"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\Downloads\MSTest_Code_BenefitSubsidy\MSTest_Code\BenefitSubsidyDesktop.Tests\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5706\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_5706"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\Downloads\MSTest_Code_BenefitSubsidy\MSTest_Code\BenefitSubsidyDesktop.Tests\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5706\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "5706"
+		SlnRelativePath = "..\..\..\Downloads\MSTest_Code_BenefitSubsidy\MSTest_Code\BenefitSubsidyDesktop.Tests\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenefitSubsidyDesktop.Tests", "..\..\..\Downloads\MSTest_Code_BenefitSubsidy\MSTest_Code\BenefitSubsidyDesktop.Tests\BenefitSubsidyDesktop.Tests.csproj", "{17890DC3-54D4-DA9F-D967-C8A6D50417B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6FD6B1A-B0EC-4FA3-84B2-C4A459EA63B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6FD6B1A-B0EC-4FA3-84B2-C4A459EA63B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6FD6B1A-B0EC-4FA3-84B2-C4A459EA63B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6FD6B1A-B0EC-4FA3-84B2-C4A459EA63B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9253C01-971C-B87B-3E1C-057A9908F1A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9253C01-971C-B87B-3E1C-057A9908F1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9253C01-971C-B87B-3E1C-057A9908F1A3}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9253C01-971C-B87B-3E1C-057A9908F1A3}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{17890DC3-54D4-DA9F-D967-C8A6D50417B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17890DC3-54D4-DA9F-D967-C8A6D50417B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17890DC3-54D4-DA9F-D967-C8A6D50417B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17890DC3-54D4-DA9F-D967-C8A6D50417B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A4BE774-4E73-47A3-834B-5014D00A883E}
+	EndGlobalSection
+EndGlobal
