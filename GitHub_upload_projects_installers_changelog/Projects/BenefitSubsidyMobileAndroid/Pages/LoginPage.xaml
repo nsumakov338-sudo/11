@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BenefitSubsidyMobileAndroid.Pages.LoginPage"
+             Title="Вход менеджера">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#EAF1FF" Offset="0.0" />
+            <GradientStop Color="#FFFFFF" Offset="0.55" />
+            <GradientStop Color="#FFF1E8" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="18">
+            <Border BackgroundColor="#0B5FFF" Padding="22" StrokeThickness="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="28" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Ростелеком" TextColor="White" FontSize="30" FontAttributes="Bold" />
+                    <Label Text="Мобильный кабинет менеджера" TextColor="#D7E4FF" FontSize="16" />
+                    <Label Text="Заявки на льготные подключения и субсидии" TextColor="#D7E4FF" FontSize="13" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White" Padding="18" Stroke="#E4E7EC" StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="24" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Подключение к Firebase" FontSize="20" FontAttributes="Bold" />
+                    <Label Text="Вставь тот же Firebase Database URL и Web API Key, что используются в программе на ПК." TextColor="#667085" />
+
+                    <Label Text="Firebase Database URL" FontAttributes="Bold" />
+                    <Entry x:Name="DatabaseUrlEntry" Placeholder="https://project-default-rtdb.europe-west1.firebasedatabase.app" Keyboard="Url" />
+
+                    <Label Text="Web API Key" FontAttributes="Bold" />
+                    <Entry x:Name="ApiKeyEntry" Placeholder="AIza..." />
+
+                    <Label Text="Email менеджера" FontAttributes="Bold" />
+                    <Entry x:Name="EmailEntry" Placeholder="manager@test.ru" Keyboard="Email" />
+
+                    <Label Text="Пароль менеджера" FontAttributes="Bold" />
+                    <Entry x:Name="PasswordEntry" Placeholder="123456" IsPassword="True" />
+
+                    <Button Text="Войти и загрузить заявки" Clicked="OnLoginClicked" />
+                    <ActivityIndicator x:Name="BusyIndicator" IsRunning="False" IsVisible="False" />
+                    <Label x:Name="StatusLabel" TextColor="#667085" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="#FFF8ED" Padding="16" Stroke="#FEDF89" StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+                <Label Text="Важно: пользователь должен быть создан в Firebase Authentication и иметь роль manager в Realtime Database: users/{UID}/role = manager." TextColor="#7A2E0E" />
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

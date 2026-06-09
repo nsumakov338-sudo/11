@@ -1,0 +1,175 @@
+{
+  "applications": {
+    "ЛГ-260520-001": {
+      "id": "ЛГ-260520-001",
+      "fullName": "Иванов Иван Иванович",
+      "phone": "+79991234567",
+      "address": "г. Москва, ул. Ленина, д. 10, кв. 15",
+      "benefitCategory": "Пенсионер",
+      "serviceType": "Интернет",
+      "status": "Принято",
+      "priority": "Срочный",
+      "dateCreated": "2026-05-20",
+      "documentNumber": "ПЕН-123456",
+      "operatorExternalComment": "Клиент ожидает звонка до 18:00",
+      "managerComment": "",
+      "assignedManagerUid": "MANAGER_UID_HERE",
+      "assignedManagerName": "Менеджер Ростелеком",
+      "createdByUid": "OPERATOR_UID_HERE",
+      "createdAt": "2026-05-20T10:00:00Z",
+      "lastModified": "2026-05-20T10:00:00Z",
+      "modifiedBy": "operator",
+      "isDeleted": false
+    },
+    "ЛГ-260520-002": {
+      "id": "ЛГ-260520-002",
+      "fullName": "Петрова Анна Сергеевна",
+      "phone": "+79001112233",
+      "address": "г. Санкт-Петербург, Невский проспект, д. 25",
+      "benefitCategory": "Многодетная семья",
+      "serviceType": "Комплексный пакет",
+      "status": "На проверке",
+      "priority": "Обычный",
+      "dateCreated": "2026-05-20",
+      "documentNumber": "МС-78910",
+      "operatorExternalComment": "Требуется проверка состава семьи",
+      "managerComment": "Документы приняты на проверку",
+      "assignedManagerUid": "MANAGER_UID_HERE",
+      "assignedManagerName": "Менеджер Ростелеком",
+      "createdByUid": "OPERATOR_UID_HERE",
+      "createdAt": "2026-05-20T11:15:00Z",
+      "lastModified": "2026-05-20T12:00:00Z",
+      "modifiedBy": "manager",
+      "isDeleted": false
+    },
+    "ЛГ-260520-003": {
+      "id": "ЛГ-260520-003",
+      "fullName": "Сидоров Алексей Петрович",
+      "phone": "+79876543210",
+      "address": "г. Казань, ул. Баумана, д. 7",
+      "benefitCategory": "Инвалид",
+      "serviceType": "ТВ",
+      "status": "Одобрено",
+      "priority": "Срочный",
+      "dateCreated": "2026-05-20",
+      "documentNumber": "МСЭ-555777",
+      "operatorExternalComment": "Нужно согласовать дату подключения",
+      "managerComment": "Документы проверены, заявка одобрена",
+      "assignedManagerUid": "MANAGER_UID_HERE",
+      "assignedManagerName": "Менеджер Ростелеком",
+      "createdByUid": "OPERATOR_UID_HERE",
+      "createdAt": "2026-05-20T12:30:00Z",
+      "lastModified": "2026-05-20T13:30:00Z",
+      "modifiedBy": "manager",
+      "isDeleted": false
+    }
+  },
+  "applicationPrivate": {
+    "ЛГ-260520-001": {
+      "internalComment": "Проверить корректность пенсионного удостоверения.",
+      "specialFlag": "Ожидает подтверждения документа",
+      "legalApprovalRequired": false,
+      "waitingDocumentConfirmation": true,
+      "updatedAt": "2026-05-20T10:00:00Z",
+      "updatedByUid": "OPERATOR_UID_HERE"
+    },
+    "ЛГ-260520-002": {
+      "internalComment": "Запросить дополнительную справку о составе семьи.",
+      "specialFlag": "Ожидает подтверждения документа",
+      "legalApprovalRequired": false,
+      "waitingDocumentConfirmation": true,
+      "updatedAt": "2026-05-20T11:15:00Z",
+      "updatedByUid": "OPERATOR_UID_HERE"
+    },
+    "ЛГ-260520-003": {
+      "internalComment": "Документы соответствуют требованиям.",
+      "specialFlag": "Требует согласования с юридическим отделом",
+      "legalApprovalRequired": true,
+      "waitingDocumentConfirmation": false,
+      "updatedAt": "2026-05-20T12:30:00Z",
+      "updatedByUid": "OPERATOR_UID_HERE"
+    }
+  },
+  "users": {
+    "OPERATOR_UID_HERE": {
+      "email": "operator@test.ru",
+      "fullName": "Оператор отдела льгот",
+      "role": "operator",
+      "isActive": true,
+      "createdAt": "2026-05-20T16:08:47Z"
+    },
+    "MANAGER_UID_HERE": {
+      "email": "manager@test.ru",
+      "fullName": "Менеджер по работе с клиентами",
+      "role": "manager",
+      "isActive": true,
+      "createdAt": "2026-05-20T16:08:47Z"
+    },
+    "ADMIN_UID_HERE": {
+      "email": "admin@test.ru",
+      "fullName": "Администратор системы",
+      "role": "admin",
+      "isActive": true,
+      "createdAt": "2026-05-20T16:08:47Z"
+    }
+  },
+  "managerStats": {
+    "MANAGER_UID_HERE": {
+      "daily": {
+        "2026-05-20": {
+          "processed": 2,
+          "approved": 1,
+          "rejected": 0,
+          "updatedAt": "2026-05-20T13:30:00Z"
+        }
+      },
+      "weekly": {
+        "2026-W21": {
+          "processed": 2,
+          "approved": 1,
+          "rejected": 0,
+          "updatedAt": "2026-05-20T13:30:00Z"
+        }
+      }
+    }
+  },
+  "auditLogs": {
+    "log_20260520_100000_001": {
+      "level": "INFO",
+      "action": "CREATE_APPLICATION",
+      "applicationId": "ЛГ-260520-001",
+      "userUid": "OPERATOR_UID_HERE",
+      "role": "operator",
+      "message": "Оператор создал заявление ЛГ-260520-001",
+      "createdAt": "2026-05-20T10:00:00Z"
+    },
+    "log_20260520_120000_002": {
+      "level": "INFO",
+      "action": "CHANGE_STATUS",
+      "applicationId": "ЛГ-260520-002",
+      "userUid": "MANAGER_UID_HERE",
+      "role": "manager",
+      "message": "Менеджер изменил статус заявления на На проверке",
+      "createdAt": "2026-05-20T12:00:00Z"
+    }
+  },
+  "notifications": {
+    "notif_20260520_001": {
+      "type": "urgent_application",
+      "applicationId": "ЛГ-260520-001",
+      "title": "Срочная заявка",
+      "text": "Поступила срочная заявка от Иванов Иван Иванович",
+      "targetRole": "manager",
+      "isRead": false,
+      "createdAt": "2026-05-20T10:00:00Z"
+    }
+  },
+  "syncMeta": {
+    "schemaVersion": 1,
+    "project": "Вариант 12. Учет заявок на льготные подключения и субсидии",
+    "owner": "Шумаков Николай",
+    "company": "Ростелеком",
+    "createdAt": "2026-05-20T16:08:47Z",
+    "lwwField": "lastModified"
+  }
+}

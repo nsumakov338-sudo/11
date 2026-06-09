@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BenefitSubsidyMobileAndroid.Pages.DetailPage"
+             Title="Карточка заявки">
+    <ScrollView>
+        <VerticalStackLayout Padding="18" Spacing="14">
+            <Border BackgroundColor="#0B5FFF" Padding="18" StrokeThickness="0">
+                <Border.StrokeShape><RoundRectangle CornerRadius="24" /></Border.StrokeShape>
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="{Binding RequestId}" TextColor="White" FontSize="24" FontAttributes="Bold" />
+                    <Label Text="{Binding FullName}" TextColor="#D7E4FF" FontSize="18" />
+                    <Label Text="{Binding Phone}" TextColor="#D7E4FF" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White" Padding="16" Stroke="#E4E7EC" StrokeThickness="1">
+                <Border.StrokeShape><RoundRectangle CornerRadius="22" /></Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Информация по заявлению" FontSize="18" FontAttributes="Bold" />
+                    <Label Text="Адрес" TextColor="#667085" />
+                    <Label Text="{Binding Address}" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout>
+                            <Label Text="Категория" TextColor="#667085" />
+                            <Label Text="{Binding BenefitCategory}" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Услуга" TextColor="#667085" />
+                            <Label Text="{Binding ServiceType}" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout>
+                            <Label Text="Приоритет" TextColor="#667085" />
+                            <Label Text="{Binding Priority}" FontAttributes="Bold" TextColor="#F26A21" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Дата подачи" TextColor="#667085" />
+                            <Label Text="{Binding SubmittedDateText}" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    <Label Text="Номер документа" TextColor="#667085" />
+                    <Label Text="{Binding DocumentNumber}" FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White" Padding="16" Stroke="#E4E7EC" StrokeThickness="1">
+                <Border.StrokeShape><RoundRectangle CornerRadius="22" /></Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Работа менеджера" FontSize="18" FontAttributes="Bold" />
+                    <Label Text="Текущий статус" FontAttributes="Bold" />
+                    <Picker x:Name="StatusPicker" SelectedItem="{Binding Status}" />
+
+                    <Label Text="Комментарий оператора / менеджера" FontAttributes="Bold" />
+                    <Label Text="{Binding OperatorExternalComment}" TextColor="#667085" />
+
+                    <Label Text="Ваш внешний комментарий, до 200 символов" FontAttributes="Bold" />
+                    <Editor x:Name="ManagerCommentEditor" Text="{Binding ManagerComment}" AutoSize="TextChanges" HeightRequest="120" Placeholder="Например: Документы проверены, заявка одобрена" />
+
+                    <Label Text="Внутренние комментарии и специальные метки оператора здесь скрыты по заданию." TextColor="#667085" FontSize="12" />
+
+                    <Button Text="Сохранить изменение" Clicked="OnSaveClicked" />
+                    <ActivityIndicator x:Name="BusyIndicator" IsVisible="False" IsRunning="False" />
+                    <Label x:Name="StatusLabel" TextColor="#667085" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BenefitSubsidyMobileAndroid.Pages.MainPage"
+             Title="Заявки менеджера">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#EEF3FF" Offset="0.0" />
+            <GradientStop Color="#FFFFFF" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="Auto,*">
+        <VerticalStackLayout Grid.Row="0" Padding="16,14" Spacing="12">
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                <VerticalStackLayout>
+                    <Label Text="Заявки на рассмотрение" FontSize="24" FontAttributes="Bold" />
+                    <Label x:Name="ConnectionLabel" Text="Подключение: проверяется" TextColor="#667085" />
+                </VerticalStackLayout>
+                <Button Grid.Column="1" Text="Обновить" Clicked="OnRefreshClicked" Padding="14,8" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                <Border BackgroundColor="White" Padding="12" Stroke="#E4E7EC" StrokeThickness="1">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="18" /></Border.StrokeShape>
+                    <VerticalStackLayout>
+                        <Label Text="Всего" TextColor="#667085" FontSize="12" />
+                        <Label x:Name="TotalLabel" Text="0" FontSize="22" FontAttributes="Bold" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="1" BackgroundColor="White" Padding="12" Stroke="#E4E7EC" StrokeThickness="1">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="18" /></Border.StrokeShape>
+                    <VerticalStackLayout>
+                        <Label Text="Одобрено" TextColor="#667085" FontSize="12" />
+                        <Label x:Name="ApprovedLabel" Text="0" FontSize="22" FontAttributes="Bold" TextColor="#0F9D58" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="2" BackgroundColor="White" Padding="12" Stroke="#E4E7EC" StrokeThickness="1">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="18" /></Border.StrokeShape>
+                    <VerticalStackLayout>
+                        <Label Text="Отказы" TextColor="#667085" FontSize="12" />
+                        <Label x:Name="RejectedLabel" Text="0" FontSize="22" FontAttributes="Bold" TextColor="#D92D20" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <Border BackgroundColor="White" Padding="12" Stroke="#E4E7EC" StrokeThickness="1">
+                <Border.StrokeShape><RoundRectangle CornerRadius="20" /></Border.StrokeShape>
+                <VerticalStackLayout Spacing="8">
+                    <SearchBar x:Name="SearchBar" Placeholder="Поиск по ФИО, адресу или комментарию" TextChanged="OnFilterChanged" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                        <Picker x:Name="CategoryPicker" Title="Категория" SelectedIndexChanged="OnFilterChanged" />
+                        <Picker Grid.Column="1" x:Name="StatusPicker" Title="Статус" SelectedIndexChanged="OnFilterChanged" />
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                        <Picker x:Name="ServiceTypePicker" Title="Услуга" SelectedIndexChanged="OnFilterChanged" />
+                        <Picker Grid.Column="1" x:Name="SortPicker" Title="Сортировка" SelectedIndexChanged="OnFilterChanged" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+
+        <RefreshView Grid.Row="1" x:Name="RefreshView" Refreshing="OnPullToRefresh">
+            <CollectionView x:Name="ApplicationsView" ItemsSource="{Binding Applications}" SelectionMode="None" EmptyView="Нет заявок. Проверь Firebase или фильтры.">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="16,6" Padding="14" BackgroundColor="White" Stroke="#E4E7EC" StrokeThickness="1">
+                            <Border.StrokeShape><RoundRectangle CornerRadius="22" /></Border.StrokeShape>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnApplicationTapped" />
+                            </Border.GestureRecognizers>
+                            <VerticalStackLayout Spacing="8">
+                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                    <Label Text="{Binding RequestId}" FontAttributes="Bold" FontSize="16" />
+                                    <Border Grid.Column="1" Padding="8,4" BackgroundColor="#EEF3FF" StrokeThickness="0">
+                                        <Border.StrokeShape><RoundRectangle CornerRadius="12" /></Border.StrokeShape>
+                                        <Label Text="{Binding Priority}" TextColor="#0B5FFF" FontAttributes="Bold" FontSize="12" />
+                                    </Border>
+                                </Grid>
+                                <Label Text="{Binding FullName}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="{Binding Address}" TextColor="#667085" />
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                                    <Label Text="{Binding BenefitCategory}" TextColor="#667085" />
+                                    <Label Grid.Column="1" Text="{Binding ServiceType}" TextColor="#667085" />
+                                </Grid>
+                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                    <Label Text="{Binding Status}" FontAttributes="Bold" TextColor="#F26A21" />
+                                    <Label Grid.Column="1" Text="{Binding SubmittedDateText}" TextColor="#667085" />
+                                </Grid>
+                                <Label Text="{Binding VisibleComment}" TextColor="#667085" LineBreakMode="TailTruncation" MaxLines="2" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>
